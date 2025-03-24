@@ -1,59 +1,18 @@
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-import Image from "next/image";
+import { ProductItem } from "@/components/product/product-item";
+import { IProduct } from "@/interfaces/IProduct";
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch("http://localhost:3004/products");
+  const prods: IProduct[] = await res.json();
   return (
     <div>
       <div className="container p-12">
-        <Carousel
-          className="w-full"
-          opts={{
-            loop: true,
-          }}
-        >
-          <CarouselContent>
-            <CarouselItem>
-              <div className="w-full">
-                <Image
-                  src="/images/banner-1.jpg"
-                  width={100}
-                  height={100}
-                  layout="responsive"
-                  alt="banner image"
-                  className="rounded-lg"
-                />
-              </div>
-            </CarouselItem>
-            <CarouselItem>
-              <Image
-                src="/images/banner-2.jpg"
-                width={100}
-                height={100}
-                layout="responsive"
-                alt="banner image"
-                className="rounded-lg"
-              />
-            </CarouselItem>
-            <CarouselItem>
-              <Image
-                src="/images/banner-3.jpg"
-                width={100}
-                height={100}
-                layout="responsive"
-                alt="banner image"
-                className="rounded-lg"
-              />
-            </CarouselItem>
-          </CarouselContent>
-          <CarouselPrevious />
-          <CarouselNext />
-        </Carousel>
+        {/* ---- products ---- */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-8">
+          {prods.map((p: IProduct) => (
+            <ProductItem key={p.id} {...p}/>
+          ))}
+        </div>
       </div>
     </div>
   );

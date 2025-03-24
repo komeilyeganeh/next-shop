@@ -1,0 +1,39 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "title": "Product Title 1",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ",
+      "image": "/images/p-1.jpg",
+      "price": "120"
+    },
+    {
+      "id": "2",
+      "title": "Product Title 2",
+      "description": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+      "image": "/images/p-2.png",
+      "price": "103"
+    },
+    {
+      "id": "3",
+      "title": "Product Title 3",
+      "description": "ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+      "image": "/images/p-1.jpg",
+      "price": "26"
+    },
+    {
+      "id": "4",
+      "title": "Product Title 4",
+      "description": "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud",
+      "image": "/images/p-1.jpg",
+      "price": "90"
+    },
+    {
+      "id": "5",
+      "title": "Product Title 5",
+      "description": "ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam",
+      "image": "/images/p-2.png",
+      "price": "36.5"
+    }
+  ]
+}
