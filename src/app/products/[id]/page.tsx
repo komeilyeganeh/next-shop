@@ -1,3 +1,4 @@
+import { CounterItem } from "@/components/counter/counter-item";
 import { IProduct } from "@/interfaces/IProduct";
 import Image from "next/image";
 
@@ -10,6 +11,8 @@ const ProductDetailPage = async ({ params }: IParams) => {
 
   const res = await fetch(`http://localhost:3004/products/${id}`);
   const prod: IProduct = await res.json();
+
+  // ---- return jsx ----
   return (
     <div className="container p-12">
       <div className="grid grid-cols-12 gap-4">
@@ -23,7 +26,14 @@ const ProductDetailPage = async ({ params }: IParams) => {
             className="rounded-lg"
           />
         </div>
-        <div className="col-span-8">detail</div>
+        <div className="col-span-8">
+          <h2 className="text-2xl font-bold">{prod.title}</h2>
+          <p className="my-2 text-gray-700">{prod.description}</p>
+          <p className="mt-8 italic">
+            <span>price : </span> <span className="font-bold">{prod.price} $</span>
+          </p>
+          <CounterItem id={prod.id}/>
+        </div>
       </div>
     </div>
   );

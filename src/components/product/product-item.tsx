@@ -36,7 +36,7 @@ export const ProductItem: FC<IProduct> = ({
           <p className="flex items-center gap-x-2">
             <span>Price : </span> <span>{price} $</span>
           </p>
-          <CounterItem />
+          <CounterItem id={id}/>
         </div>
       </CardContent>
     </Card>

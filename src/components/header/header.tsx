@@ -9,8 +9,10 @@ import {
 } from "../ui/navigation-menu";
 import Link from "next/link";
 import { Badge } from "../ui/badge";
+import { CartBadge } from "../cart-badge/cart-badge";
 
 export const Header: FC = () => {
+  // ---- return jsx ----
   return (
     <header className="bg-cyan-500 py-4">
       <div className="container flex items-center justify-between">
@@ -18,10 +20,7 @@ export const Header: FC = () => {
           <NavLinks />
         </NavMenu>
         <div className="flex items-center gap-5">
-          <Link href="/cart" className="relative">
-            <FaCartShopping size={20} color="#fff"/>
-            <Badge className="absolute -left-3 rounded-full top-4">5</Badge>
-          </Link>
+          <CartBadge />
           <NavMenu>
             <NavigationMenuItem>
               <Link href="/login" legacyBehavior passHref>
