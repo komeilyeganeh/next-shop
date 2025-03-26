@@ -32,7 +32,7 @@ const ProductDetailPage = async ({ params }: IParams) => {
           <p className="mt-8 italic">
             <span>price : </span> <span className="font-bold">{prod.price} $</span>
           </p>
-          <CounterItem id={prod.id}/>
+          <CounterItem id={prod.id} price={prod.price}/>
         </div>
       </div>
     </div>

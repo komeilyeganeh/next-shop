@@ -14,20 +14,20 @@ export const ProductItem: FC<IProduct> = ({
   price,
 }) => {
   return (
-    <Card>
+    <Card className="h-[340px] flex flex-col justify-between">
       <CardHeader>
         <div className="w-full">
           <Image
             src={image}
             width={100}
-            height={100}
+            height={120}
             layout="responsive"
             className="rounded-lg"
             alt="product image"
           />
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col gap-y-4">
+      <CardContent className="flex flex-col justify-between gap-y-4">
         <Link href={`/products/${id}`} className="font-bold">
           {title}
         </Link>
@@ -36,7 +36,7 @@ export const ProductItem: FC<IProduct> = ({
           <p className="flex items-center gap-x-2">
             <span>Price : </span> <span>{price} $</span>
           </p>
-          <CounterItem id={id}/>
+          <CounterItem id={id} price={price}/>
         </div>
       </CardContent>
     </Card>

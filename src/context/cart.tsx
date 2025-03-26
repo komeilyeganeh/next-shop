@@ -1,7 +1,7 @@
 "use client";
 
 import { ICartProvider, ICart, ICartItem } from "@/interfaces/ICart";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createContext } from "react";
 
 const initialCart: ICart = {
@@ -18,34 +18,45 @@ export const CartContextProvider = ({ children }: ICartProvider) => {
   const [total, setTotal] = useState(0);
 
   // ---- handlers ----
-  const handleAddItemToCart = (id: string) => {
+  const handleAddItemToCart = (id: string, price: string) => {    
     let listItems: ICartItem[] = [...cartItems];
     const prodIndex = listItems.findIndex((item: ICartItem) => item.id === id);
     if (prodIndex !== -1) {
       const prod: ICartItem = listItems[prodIndex];
-      const prodUpdated = { id: prod.id, qty: prod.qty + 1 };
+      const prodUpdated = { id: prod.id, qty: prod.qty + 1, price: +price };
       listItems[prodIndex] = prodUpdated;
     } else {
-      const newItem = { id, qty: 1 };
+      const newItem = { id, qty: 1, price: +price };
       listItems = [...listItems, newItem];
     }
     setCartItems(listItems);
   };
-  const handleRemoveItemToCart = (id: string) => {
+  const handleRemoveItemToCart = (id: string, price: string) => {
     let listItems: ICartItem[] = [...cartItems];
     const prodIndex = listItems.findIndex((item: ICartItem) => item.id === id);
     if (prodIndex !== -1) {
       const prod: ICartItem = listItems[prodIndex];
-      if (prod.qty > 0) {
-        const prodUpdated = { id: prod.id, qty: prod.qty - 1 };
-        listItems[prodIndex] = prodUpdated;
-      } else {
-        const filteredItems = listItems.filter((item: ICartItem) => item.id !== prod.id);
+      const prodUpdated = { id: prod.id, qty: prod.qty - 1, price: prod.price };
+      listItems[prodIndex] = prodUpdated;
+      if (prod.qty === 0) {
+        const filteredItems = listItems.filter(
+          (item: ICartItem) => item.id !== prod.id
+        );
         listItems = filteredItems;
       }
     }
     setCartItems(listItems);
   };
+
+  useEffect(() => {
+    if (cartItems.length > 0) {
+      const totalPrice = cartItems.reduce((sum, item) => sum + (item.qty * +item.price), 0);
+      console.log(totalPrice);
+      
+      setTotal(totalPrice);
+    }
+  }, [cartItems]);
+  
 
   return (
     <CartContext.Provider

@@ -13,10 +13,6 @@ const links: INavbar[] = [
     title: "Home",
   },
   {
-    href: "/products",
-    title: "Products",
-  },
-  {
     href: "/about-us",
     title: "About Us",
   },

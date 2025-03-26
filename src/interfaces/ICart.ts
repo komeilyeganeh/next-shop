@@ -4,10 +4,11 @@ export interface ICartProvider {
 export interface ICartItem {
     id: string;
     qty: number;
+    price: number;
 }
 export interface ICart {
     cartItems: ICartItem[];
     total: number;
-    handleAddItemToCart: (id: string) => void;
-    handleRemoveItemToCart: (id: string) => void;
+    handleAddItemToCart: (id: string, price: string) => void;
+    handleRemoveItemToCart: (id: string, price: string) => void;
 }

@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 import { CartContext } from "@/context/cart";
 import { ICartItem } from "@/interfaces/ICart";
 
-export const CounterItem: FC<{ id: string }> = ({ id }) => {
+export const CounterItem: FC<{ id: string, price: string }> = ({ id, price }) => {
   const { cartItems, handleAddItemToCart, handleRemoveItemToCart } =
     useContext(CartContext);
   const [productQty, setProductQty] = useState<number>(0);
@@ -17,17 +17,17 @@ export const CounterItem: FC<{ id: string }> = ({ id }) => {
 
   // ---- return jsx ----
   return (
-    <div className="flex items-center gap-2 bg-slate-200 p-1 rounded-md w-max">
+    <div className="flex items-center gap-2 bg-slate-200 p-1 rounded-md w-max mt-4">
       <Button
         className="w-6 h-6 bg-slate-100 text-black hover:bg-slate-400"
-        onClick={() => handleRemoveItemToCart(id)}
+        onClick={() => handleRemoveItemToCart(id, price)}
       >
         -
       </Button>
       <span>{productQty}</span>
       <Button
         className="w-6 h-6 bg-slate-100 text-black hover:bg-slate-400"
-        onClick={() => handleAddItemToCart(id)}
+        onClick={() => handleAddItemToCart(id, price)}
       >
         +
       </Button>
