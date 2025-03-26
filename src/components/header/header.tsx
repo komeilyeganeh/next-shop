@@ -1,20 +1,22 @@
 import { FC } from "react";
 import { NavMenu } from "../navbar/nav-menu";
-import { FaCartShopping } from "react-icons/fa6";
 import { NavLinks } from "../navbar/nav-links";
 import {
   NavigationMenuItem,
-  NavigationMenuLink,
-  navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
-import Link from "next/link";
-import { Badge } from "../ui/badge";
 import { CartBadge } from "../cart-badge/cart-badge";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Button } from "../ui/button";
 
 export const Header: FC = () => {
   // ---- return jsx ----
   return (
-    <header className="bg-cyan-500 py-4">
+    <header className="bg-amber-600 py-4">
       <div className="container flex items-center justify-between">
         <NavMenu>
           <NavLinks />
@@ -23,13 +25,14 @@ export const Header: FC = () => {
           <CartBadge />
           <NavMenu>
             <NavigationMenuItem>
-              <Link href="/login" legacyBehavior passHref>
-                <NavigationMenuLink
-                  className={`${navigationMenuTriggerStyle()} bg-transparent text-white text-base`}
-                >
-                  Login/Signup
-                </NavigationMenuLink>
-              </Link>
+              <SignedOut>
+                <Button asChild>
+                  <SignInButton />
+                </Button>
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
             </NavigationMenuItem>
           </NavMenu>
         </div>

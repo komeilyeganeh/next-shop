@@ -10,6 +10,7 @@
     "db": "npx json-server --watch ./src/db.json --port 3004"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.12.11",
     "@radix-ui/react-navigation-menu": "^1.2.5",
     "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",

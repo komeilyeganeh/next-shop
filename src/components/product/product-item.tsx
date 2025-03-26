@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
+import { Card, CardContent, CardHeader } from "../ui/card";
 import Image from "next/image";
 import Link from "next/link";
 import { CounterItem } from "../counter/counter-item";
@@ -27,14 +27,14 @@ export const ProductItem: FC<IProduct> = ({
           />
         </div>
       </CardHeader>
-      <CardContent className="flex flex-col justify-between gap-y-4">
+      <CardContent className="flex flex-col justify-between gap-y-2">
         <Link href={`/products/${id}`} className="font-bold">
           {title}
         </Link>
         <p className="text-sm">{truncateText(description, 27)}</p>
-        <div className="flex items-center justify-between">
-          <p className="flex items-center gap-x-2">
-            <span>Price : </span> <span>{price} $</span>
+        <div className="flex flex-col justify-between">
+          <p className="bg-slate-100 p-1 rounded-lg font-semibold">
+           {price} $
           </p>
           <CounterItem id={id} price={price}/>
         </div>

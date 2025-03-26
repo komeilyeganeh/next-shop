@@ -31,7 +31,7 @@ export const CartContextProvider = ({ children }: ICartProvider) => {
     }
     setCartItems(listItems);
   };
-  const handleRemoveItemToCart = (id: string, price: string) => {
+  const handleRemoveItemToCart = (id: string) => {
     let listItems: ICartItem[] = [...cartItems];
     const prodIndex = listItems.findIndex((item: ICartItem) => item.id === id);
     if (prodIndex !== -1) {
@@ -50,9 +50,7 @@ export const CartContextProvider = ({ children }: ICartProvider) => {
 
   useEffect(() => {
     if (cartItems.length > 0) {
-      const totalPrice = cartItems.reduce((sum, item) => sum + (item.qty * +item.price), 0);
-      console.log(totalPrice);
-      
+      const totalPrice = cartItems.reduce((sum, item) => sum + (item.qty * +item.price), 0);      
       setTotal(totalPrice);
     }
   }, [cartItems]);

@@ -7,7 +7,7 @@ export default async function Home() {
   return (
     <div className="container p-12">
       {/* ---- products ---- */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 mt-8">
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-3 mt-8">
         {prods.map((p: IProduct) => (
           <ProductItem key={p.id} {...p} />
         ))}

@@ -1,3 +1,5 @@
+"use client"
+
 import { INavbar } from "@/interfaces/INavbar";
 import { FC } from "react";
 import {
@@ -6,6 +8,7 @@ import {
   navigationMenuTriggerStyle,
 } from "../ui/navigation-menu";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const links: INavbar[] = [
   {
@@ -23,9 +26,12 @@ const links: INavbar[] = [
 ];
 
 export const NavLinks: FC = () => {
+  const pathname = usePathname();
+  
+  // ---- return jsx ----
   return links.map((link: INavbar) => (
     <NavigationMenuItem key={link.href}>
-      <Link href={link.href} legacyBehavior passHref>
+      <Link href={link.href} legacyBehavior passHref className={`${pathname === link.href ? "bg-white" : ""} `}>
         <NavigationMenuLink
           className={`${navigationMenuTriggerStyle()} bg-transparent text-white text-base`}
         >

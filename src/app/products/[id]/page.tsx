@@ -16,7 +16,7 @@ const ProductDetailPage = async ({ params }: IParams) => {
   return (
     <div className="container p-12">
       <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-4">
+        <div className="col-span-12 md:col-span-4">
           <Image
             src={prod.image}
             width={300}
@@ -26,7 +26,7 @@ const ProductDetailPage = async ({ params }: IParams) => {
             className="rounded-lg"
           />
         </div>
-        <div className="col-span-8">
+        <div className="col-span-12 md:col-span-8">
           <h2 className="text-2xl font-bold">{prod.title}</h2>
           <p className="my-2 text-gray-700">{prod.description}</p>
           <p className="mt-8 italic">
